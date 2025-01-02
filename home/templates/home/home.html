@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        {% if messages %}
+            {% for msg in messages %}
+                <h4>{{ msg }}</h4>
+            {% endfor %}
+        {% else %}
+            {% if user.is_authenticated %}
+                <h4>Welcome {{ user.username }}, nice to see You!</h4>
+            {% else %}
+                <h4>Welcome, please log in.</h4>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
