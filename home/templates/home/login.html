@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <form class="border p-4 rounded" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-3">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="alert alert-danger mb-3">{{ msg }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+</div>
+{% endblock %}
