@@ -14,14 +14,14 @@
 </head>
 <body>
 
-{% include 'partials/nav.html' %}
+    {% include 'partials/nav.html' %}
 
+    {% block content %}
+        {#        #}
+    {% endblock %}
 
-{% block content %}
-{% endblock %}
-
-{% block scripts %}
-    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
-{% endblock %}
+    {% block scripts %}
+        <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    {% endblock %}
 </body>
 </html>
