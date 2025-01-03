@@ -8,9 +8,9 @@
             {% endfor %}
         {% else %}
             {% if user.is_authenticated %}
-                <h4>Welcome {{ user.username }}, nice to see You!</h4>
+                <h4>Welcome {{ user.first_name }}, nice to see You!</h4>
             {% else %}
-                <h4>Welcome, please log in.</h4>
+                <h4>Welcome to SimpleLIMS application, please log in.</h4>
             {% endif %}
         {% endif %}
     </div>

@@ -1,3 +1,4 @@
+{% load global_filters %}
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home:home_view' %}">SimpleLIMS</a>
@@ -8,24 +9,20 @@
         <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home:home_view' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
+                {% if user|in_group:"Clients" %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Create order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Orders list</a>
+                    </li>
+                {% endif %}
             </ul>
 
             {% if user.is_authenticated %}
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <div class="navbar-text pe-2 text-white">{{ user.username }}</div>
+                        <div class="navbar-text pe-2 text-info">{{ user.username }}</div>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'home:logout' %}" class="nav-link">Log out</a>
