@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <h4>{{ profile_type }} {{ user.first_name }} {{ user.last_name }}.</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Phone number: {{ extra_info.phone_number }}<br>
+                Company: {{ extra_info.company }}<br>
+                email: {{ user.email }}</p>
+            </div>
+        </div>
+        <div class="row">
+            {% if sites %}
+                <ul class="list-group">
+                    {% for site in sites %}
+                        <li class="list-group-item">{{ site }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+
+    </div>
+
+{% endblock %}
