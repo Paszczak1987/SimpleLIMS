@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User, Group
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.html import format_html
 from django.views import View
-
 
 # Create your views here.
 class HomeView(View):
@@ -38,8 +38,7 @@ class LoginView(View):
                 'placeholder': format_html('Enter your {}', field.label.lower())
             })
 
-
-class ProfileView(View):
+class ProfileView(LoginRequiredMixin, View):
     def get_user_group_context(self, user):
         if user.groups.filter(name="Client").exists():
             print(user.building_sites)
@@ -68,7 +67,6 @@ class ProfileView(View):
         context = {'extra_info': getattr(user, 'extra_info', None)}
         context.update(self.get_user_group_context(user))
         return render(request, 'home/profile.html', context)
-
 
 class LogoutView(View):
     def get(self, request):

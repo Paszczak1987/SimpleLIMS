@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <h4>Construction site details for <span
+                    class="fst-italic text-warning-emphasis">{{ building_site.short_name }}</span>.</h4>
+        </div>
+        <div class="row row-cols-auto">
+            <div class="col">
+                <strong>Full name:</strong>
+            </div>
+            <div class="col">
+                <span class="fst-italic text-break">{{ building_site.name }}</span>
+            </div>
+        </div>
+        <div class="row row-cols-auto">
+            <div class="col">
+                <strong>Office address:</strong>
+            </div>
+            <div class="col">
+                <span class="fst-italic">{{ building_site.office_address }}</span>
+            </div>
+        </div>
+        <div class="row row-cols-auto">
+            <div class="col">
+                <strong>Order responsibles:</strong>
+            </div>
+        </div>
+        <div class="row row-cols-auto">
+            <div class="col">
+                <strong>Laboratory:</strong>
+            </div>
+        </div>
+    </div>
+{% endblock %}
