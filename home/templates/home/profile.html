@@ -4,27 +4,56 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <h4>{{ profile_type }} {{ user.first_name }} {{ user.last_name }}.</h4>
+                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
             </div>
         </div>
-        <div class="row">
+        <div class="row row-cols-auto">
             <div class="col">
-                <p>Phone number: {{ extra_info.phone_number }}<br>
-                Company: {{ extra_info.company }}<br>
-                email: {{ user.email }}</p>
+                <strong>User role:</strong>
+            </div>
+            <div class="col">
+                <span class="fst-italic text-warning-emphasis">{{ profile_type }}</span>
             </div>
         </div>
-        <div class="row">
-            {% if sites %}
-                <ul class="list-group">
-                    {% for site in sites %}
-                        <li class="list-group-item">{{ site }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
+        <div class="row row-cols-auto">
+            <div class="col">
+                <strong>Phone:</strong>
+            </div>
+            <div class="col">
+                <span class="fst-italic">{{ extra_info.phone_number }}</span>
+            </div>
         </div>
-
-
+        <div class="row row-cols-auto">
+            <div class="col">
+                <strong>Company:</strong>
+            </div>
+            <div class="col">
+                <span class="fst-italic">{{ extra_info.company }}</span>
+            </div>
+        </div>
+        <div class="row row-cols-auto">
+            <div class="col">
+                <strong>Email:</strong>
+            </div>
+            <div class="col">
+                <span class="fst-italic">{{ user.email }}</span>
+            </div>
+        </div>
+        {% if sites %}
+            <div class="row row-cols-auto">
+                <div class="col">
+                    <strong>Construction sites:</strong>
+                </div>
+                <div class="col">
+                    <ul class="list-group-flush ">
+                        {% for site in sites %}
+                            <li class="list-group-item">
+                                <a href="{% url 'building_site:site_view' pk=site.pk %}">{{ site.short_name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
     </div>
-
 {% endblock %}
