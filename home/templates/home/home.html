@@ -8,10 +8,20 @@
             {% endfor %}
         {% else %}
             {% if user.is_authenticated %}
-                <h4>Welcome {{ user.first_name }}, nice to see You!</h4>
+                <h4>Welcome <span class="text-warning-emphasis">{{ user.first_name }}</span>, nice to see You!</h4>
             {% else %}
                 <h4>Welcome to SimpleLIMS application, please log in.</h4>
             {% endif %}
         {% endif %}
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {% if messages %}
+        <script type="text/javascript">
+            setTimeout(function() {
+              location.reload();
+            }, 3000);
+      </script>
+    {% endif %}
 {% endblock %}
