@@ -1,6 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from home.models import Client, SystemUser
+from laboratory.models import Laboratory
+
+
 # Create your models here.
 class SiteOfficeAddress(models.Model):
     street = models.CharField(max_length=150)
@@ -16,7 +20,8 @@ class BuildingSite(models.Model):
     name = models.TextField()
     short_name = models.CharField(max_length=100, unique=True)
     office_address = models.ForeignKey(SiteOfficeAddress, on_delete=models.SET_NULL, null=True)
-    ordering_persons = models.ManyToManyField(User, related_name="building_sites", blank=True)
+    ordering_persons = models.ManyToManyField(Client, related_name="building_sites", blank=True)
+    laboratories = models.ManyToManyField(Laboratory, related_name="building_sites", blank=True)
     
     def __str__(self):
         return f"{self.short_name} ({self.office_address})"

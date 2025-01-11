@@ -20,7 +20,7 @@
                 <strong>Phone:</strong>
             </div>
             <div class="col">
-                <span class="fst-italic">{{ extra_info.phone_number }}</span>
+                <span class="fst-italic">{{ user.phone_number }}</span>
             </div>
         </div>
         <div class="row row-cols-auto">
@@ -28,7 +28,7 @@
                 <strong>Company:</strong>
             </div>
             <div class="col">
-                <span class="fst-italic">{{ extra_info.company }}</span>
+                <span class="fst-italic">{{ user.company }}</span>
             </div>
         </div>
         <div class="row row-cols-auto">
@@ -39,6 +39,7 @@
                 <span class="fst-italic">{{ user.email }}</span>
             </div>
         </div>
+
         {% if sites %}
             <div class="row row-cols-auto">
                 <div class="col">
@@ -55,5 +56,17 @@
                 </div>
             </div>
         {% endif %}
+
+        {% if laboratory %}
+            <div class="row row-cols-auto">
+                <div class="col">
+                    <strong>Laboratory:</strong>
+                </div>
+                <div class="col">
+                    <span class="fst-italic">{{ laboratory }}</span>
+                </div>
+            </div>
+        {% endif %}
+
     </div>
 {% endblock %}

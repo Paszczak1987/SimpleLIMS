@@ -10,3 +10,12 @@ class BuildingSiteView(LoginRequiredMixin, DetailView):
     model = BuildingSite
     template_name = 'building_site/building_site.html'
     context_object_name = 'building_site'
+
+    def get_context_data(self, **kwargs):
+        # Pobrane dane kontekstowe od standardowego DetailView
+        context = super().get_context_data(**kwargs)
+
+        # Dodanie listy zamawiających osób do kontekstu
+        context['ordering_persons'] = self.object.ordering_persons.all()
+
+        return context
