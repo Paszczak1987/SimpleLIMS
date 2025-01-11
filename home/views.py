@@ -7,6 +7,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.html import format_html
 from django.views import View
 
+from home.models import Client, Technician, Manager
+
+
 # Create your views here.
 class HomeView(View):
     def get(self, request):
@@ -41,20 +44,23 @@ class LoginView(View):
 class ProfileView(LoginRequiredMixin, View):
     def get_user_group_context(self, user):
         if user.groups.filter(name="Client").exists():
-            print(user.building_sites)
+            client = user.client
+            print(client.building_sites)
             return {
                 'profile_type': 'Client',
-                'sites': user.building_sites.all(),
+                'sites': client.building_sites.all(),
             }
         elif user.groups.filter(name="Technician").exists():
+            technician = user.technician
             return {
                 'profile_type': 'Technician',
-                'tasks': 'Lista zadań technicznych',
+                'laboratory': technician.laboratory,
             }
         elif user.groups.filter(name="Manager").exists():
+            manager = user.manager
             return {
                 'profile_type': 'Manager',
-                'reports': 'Dane zarządcze do przeglądu',
+                'laboratory': manager.laboratory,
             }
         else:
             return {
@@ -64,8 +70,7 @@ class ProfileView(LoginRequiredMixin, View):
     
     def get(self, request):
         user = request.user
-        context = {'extra_info': getattr(user, 'extra_info', None)}
-        context.update(self.get_user_group_context(user))
+        context = self.get_user_group_context(user)
         return render(request, 'home/profile.html', context)
 
 class LogoutView(View):

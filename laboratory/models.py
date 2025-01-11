@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -15,3 +14,9 @@ class Laboratory(models.Model):
     country = models.CharField(max_length=100)
     
     manager = models.OneToOneField('home.Manager', related_name='laboratory', on_delete=models.SET_NULL, null=True)
+    
+    def __str__(self):
+        return self.short_name
+    
+    def address(self):
+        return f'{self.street} {self.number}, {self.postal_code} {self.city}, {self.country}'

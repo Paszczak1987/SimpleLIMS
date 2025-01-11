@@ -2,11 +2,11 @@
 
 {% block content %}
     <div class="container mt-5">
-        <div class="row">
+        <div class="row pb-1">
             <h4>Construction site details for <span
                     class="fst-italic text-warning-emphasis">{{ building_site.short_name }}</span>.</h4>
         </div>
-        <div class="row row-cols-auto">
+        <div class="row row-cols-auto pb-1">
             <div class="col">
                 <strong>Full name:</strong>
             </div>
@@ -14,7 +14,7 @@
                 <span class="fst-italic text-break">{{ building_site.name }}</span>
             </div>
         </div>
-        <div class="row row-cols-auto">
+        <div class="row row-cols-auto pb-1">
             <div class="col">
                 <strong>Office address:</strong>
             </div>
@@ -22,14 +22,22 @@
                 <span class="fst-italic">{{ building_site.office_address }}</span>
             </div>
         </div>
-        <div class="row row-cols-auto">
+        <div class="row row-cols-auto pb-1">
+            <div class="col d-flex align-items-center">
+                <span class="align-middle"><strong>Order responsible/s:</strong></span>
+            </div>
             <div class="col">
-                <strong>Order responsibles:</strong>
+                <ul class="list-group-flush my-0 px-0">
+                    {% for person in ordering_persons %}
+                        <li class="list-group-item">{{ person.first_name }} {{ person.last_name }} </li>
+                    {% endfor %}
+                </ul>
+
             </div>
         </div>
-        <div class="row row-cols-auto">
+        <div class="row row-cols-auto pb-1">
             <div class="col">
-                <strong>Laboratory:</strong>
+                <strong>Laboratory/s:</strong>
             </div>
         </div>
     </div>

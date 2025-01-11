@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from home.models import Client
+from home.models import Client, SystemUser
 from laboratory.models import Laboratory
 
 

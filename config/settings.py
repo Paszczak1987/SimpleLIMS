@@ -111,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Default User model
+AUTH_USER_MODEL = 'home.SystemUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
