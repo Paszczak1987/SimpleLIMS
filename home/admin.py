@@ -4,4 +4,7 @@ from django.contrib import admin
 
 from . import models
 
-admin.site.register(models.UserAdditionalInfo)
+admin.site.register(models.SystemUser)
+admin.site.register(models.Client)
+admin.site.register(models.Manager)
+admin.site.register(models.Technician)

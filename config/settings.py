@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'client.apps.ClientConfig',
     'building_site.apps.BuildingSiteConfig',
+    'laboratory.apps.LaboratoryConfig',
 ]
 
 MIDDLEWARE = [
